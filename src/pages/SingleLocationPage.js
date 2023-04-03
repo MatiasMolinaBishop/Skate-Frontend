@@ -11,9 +11,11 @@ const SingleLocationPage = () => {
     const { locationId } = useParams()
 
     const fetchLocation = async () => {
+        // Get the token from the localStorage
+        const storedToken = localStorage.getItem("authToken");
 
         try {
-            const response = await axios.get(`http://localhost:5005/api/locations/${locationId}`)
+            const response = await axios.get(`http://localhost:5005/api/locations/${locationId}`, { headers: { Authorization: `Bearer ${storedToken}` } })
             setLocation(response.data)
             console.log(location)
             //console.log('SHIT')
@@ -27,9 +29,9 @@ const SingleLocationPage = () => {
         fetchLocation()
     }, [])
 
-    const getAllEvents = () => {
-        console.log('HANDLE THIS LATER')
-    }
+    // const getAllEvents = () => {
+    //     console.log('HANDLE THIS LATER')
+    // }
 
     return (
         <div>
@@ -39,7 +41,7 @@ const SingleLocationPage = () => {
                 <p>{location.description}</p>
             </div>
             {/* LATER ON WE WANT TO MAP OVER ALL THE EVENTS THAT EXIST ON EACH LOCATION */}
-            <AddEvent refreshEvents={getAllEvents} />
+            <AddEvent fetchLocation={fetchLocation} locationId={locationId} />
             {location.events &&
                 location.events.map((event) => (
                     <Link to={`/events/${event._id}`} key={event._id}>

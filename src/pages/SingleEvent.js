@@ -9,8 +9,10 @@ const SingleEvent = () => {
 
     const fetchtEvent = async () => {
 
+        const storedToken = localStorage.getItem("authToken");
+
         try {
-            const response = await axios.get(`http://localhost:5005/api/events/${eventId}`)
+            const response = await axios.get(`http://localhost:5005/api/events/${eventId}`, { headers: { Authorization: `Bearer ${storedToken}` } })
             setEvent(response.data)
             console.log(event)
 

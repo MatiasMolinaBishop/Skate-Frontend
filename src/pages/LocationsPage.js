@@ -8,9 +8,10 @@ const Locations = () => {
     const APIurl = 'http://localhost:5005/api/locations'
 
     const fetchLocations = async () => {
+        const storedToken = localStorage.getItem("authToken");
 
         try {
-            const response = await axios.get(APIurl)
+            const response = await axios.get(APIurl, { headers: { Authorization: `Bearer ${storedToken}` } })
             const data = response.data
             setLocations(data)
         } catch (err) {
@@ -29,7 +30,7 @@ const Locations = () => {
             <h1>LOCATIONS</h1>
             {locations.map((location) => {
                 return (
-                    <div className='location-card'>
+                    <div className='location-card' key={location._id}>
                         <Link to={`/locations/${location._id}`}>
                             <h3>{location.title}</h3>
                             <img src={location.img} alt='skatepark img' />
