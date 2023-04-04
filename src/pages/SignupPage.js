@@ -16,6 +16,8 @@ function SignupPage(props) {
     const handlePassword = (e) => setPassword(e.target.value);
     const handleName = (e) => setName(e.target.value);
 
+    // https://images.unsplash.com/photo-1454391304352-2bf4678b1a7a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8c3VyZnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60
+
 
     const handleSignupSubmit = async (e) => {
         e.preventDefault()
@@ -32,41 +34,56 @@ function SignupPage(props) {
 
 
     return (
-        <div className="SignupPage">
-            <h1>Sign Up</h1>
+        <div className="session">
 
-            <form onSubmit={handleSignupSubmit}>
-                <label>Email:</label>
-                <input
-                    type="email"
-                    name="email"
-                    value={email}
-                    onChange={handleEmail}
-                />
+            <div>
+                <img className="left" src='https://images.unsplash.com/photo-1602523034374-7f96778436ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fHBhbG0lMjB0cmVlc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60' alt='login img' />
+            </div>
+            <div>
+                <h1 className="h1-auth">Join Our Community</h1>
+                <p className="p-auth">Meet people through event meetups and share your passion for boards:</p>
+                <form className="form-auth" onSubmit={handleSignupSubmit}>
+                    <div className="floating-label">
+                        <label className="label-auth">Email:</label>
+                        <input
+                            className="input-auth"
+                            type="email"
+                            name="email"
+                            value={email}
+                            onChange={handleEmail}
+                        />
+                    </div>
+                    <div className="floating-label">
 
-                <label>Password:</label>
-                <input
-                    type="password"
-                    name="password"
-                    value={password}
-                    onChange={handlePassword}
-                />
+                        <label className="label-auth">Password:</label>
+                        <input
+                            className="input-auth"
+                            type="password"
+                            name="password"
+                            value={password}
+                            onChange={handlePassword}
+                        />
+                    </div>
+                    <div className="floating-label">
 
-                <label>Name:</label>
-                <input
-                    type="text"
-                    name="name"
-                    value={name}
-                    onChange={handleName}
-                />
+                        <label className="label-auth">Name:</label>
+                        <input
+                            className="input-auth"
+                            type="text"
+                            name="name"
+                            value={name}
+                            onChange={handleName}
+                        />
+                    </div>
 
-                <button type="submit">Sign Up</button>
-            </form>
+                    <button className='button-auth' type="submit">Sign Up</button>
+                </form>
 
-            {errorMessage && <p className="error-message">{errorMessage}</p>}
+                {errorMessage && <p className="error-message">{errorMessage}</p>}
 
-            <p>Already have account?</p>
-            <Link to={"/login"}> Login</Link>
+                <p className="p-auth">Already have account?</p>
+                <Link className='link-forms' to={"/login"}> Login</Link>
+            </div>
         </div>
     )
 }

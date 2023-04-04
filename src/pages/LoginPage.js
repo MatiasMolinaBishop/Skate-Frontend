@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from '../context/auth.context';
+import '../pages/CSS/LoginPage.css'
 
 function LoginPage(props) {
     const [email, setEmail] = useState("");
@@ -37,32 +38,44 @@ function LoginPage(props) {
     };
 
     return (
-        <div className="LoginPage">
-            <h1>Login</h1>
+        <div className="session">
+            <div>
+                <img className="left" src='https://images.unsplash.com/photo-1531565637446-32307b194362?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8c2thdGVib2FyZHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60' alt='login img' />
+            </div>
+            <div>
+                <h1 className="h1-auth">We love <span className="span-auth">BOARDS</span></h1>
+                <p className="p-auth">Welcome back! Log in to your account to view today's events and shred:</p>
+                <form className="form-auth" onSubmit={handleLoginSubmit}>
+                    <div className="floating-label">
+                        <label className="label-auth">Email:</label>
+                        <input
+                            className="input-auth"
+                            type="email"
+                            name="email"
+                            value={email}
+                            onChange={handleEmail}
+                        />
+                    </div>
+                    <div className="floating-label">
 
-            <form onSubmit={handleLoginSubmit}>
-                <label>Email:</label>
-                <input
-                    type="email"
-                    name="email"
-                    value={email}
-                    onChange={handleEmail}
-                />
+                        <label className="label-auth">Password:</label>
+                        <input
+                            className="input-auth"
+                            type="password"
+                            name="password"
+                            value={password}
+                            onChange={handlePassword}
+                        />
+                    </div>
 
-                <label>Password:</label>
-                <input
-                    type="password"
-                    name="password"
-                    value={password}
-                    onChange={handlePassword}
-                />
+                    <button className='button-auth' type="submit">Login</button>
+                </form>
 
-                <button type="submit">Login</button>
-            </form>
-            {errorMessage && <p className="error-message">{errorMessage}</p>}
+                {errorMessage && <p className="error-message">{errorMessage}</p>}
 
-            <p>Don't have an account yet?</p>
-            <Link to={"/signup"}> Sign Up</Link>
+                <p className="p-auth">Don't have an account yet?</p>
+                <Link className='link-forms' to={"/signup"}> Sign Up</Link>
+            </div>
         </div>
     )
 }
