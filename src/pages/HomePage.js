@@ -1,5 +1,6 @@
 import '../pages/CSS/HomePage.css'
 import ImageSlider from '../components/ImageSlider';
+import Accordion from '../components/Accordion';
 
 const HomePage = () => {
 
@@ -31,6 +32,7 @@ const HomePage = () => {
             <div className='carousel'>
                 <ImageSlider slides={slides} />
             </div>
+            <Accordion />
         </>
     );
 }
