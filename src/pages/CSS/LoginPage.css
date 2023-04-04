@@ -51,11 +51,11 @@
     min-width: 100px;
     border-radius: 24px;
     text-align: center;
-    padding: 12px 34px;
+    padding: 10px 4px;
     margin-top: 5px;
     background-color: #000;
     color: #fff;
-    font-size: 14px;
+    font-size: 12px;
     margin-left: auto;
     font-weight: 500;
     box-shadow: 0px 2px 6px -1px rgba(0, 0, 0, .13);
@@ -66,7 +66,7 @@
 }
 
 .button-auth:hover {
-    transform: translateY(-1px);
+    transform: translateY(-1.5px);
     box-shadow: 0 2px 6px -1px;
 }
 
@@ -76,7 +76,7 @@
     justify-content: center;
     width: auto;
     height: auto;
-    margin: 20px auto;
+    margin: 70px 290px;
     background: #ffffff;
     border-radius: 4px;
     box-shadow: 0px 2px 6px -1px rgba(0, 0, 0, .12);

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import '../components/CSS/Navbar.css'
 
 const AddEvent = (props) => {
 
