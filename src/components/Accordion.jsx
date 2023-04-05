@@ -20,6 +20,10 @@ const Accordion = () => {
             question:'What tech did you use?',
             answer:'This web applcation was built with JavaSciript and NodeJS. More specifically with Express & MongoDB for the backend and React for the frontend'   
         },
+        {
+            question:'Any CSS libraries?',
+            answer:'Nah just CSS ...'   
+        }
 
     ]
 

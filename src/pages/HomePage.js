@@ -19,6 +19,11 @@ const HomePage = () => {
             url: 'https://images.unsplash.com/photo-1516149893016-813d9a01d5d3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjZ8fGZyaWVuZHN8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60',
             title: 'Create Events!',
             description: 'Create events and see whos attending'
+        },
+        {
+            url: 'https://images.unsplash.com/photo-1529669851596-ba9a5549af95?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c25vd2JvYXJkfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60',
+            title: 'Make Friends!',
+            description: 'Meet people who like to doing the same things you'
         }
     ]
 
@@ -32,7 +37,10 @@ const HomePage = () => {
             <div className='carousel'>
                 <ImageSlider slides={slides} />
             </div>
-            <Accordion />
+            <div className='accordion-center'>
+                <Accordion />
+            </div>
+
         </>
     );
 }

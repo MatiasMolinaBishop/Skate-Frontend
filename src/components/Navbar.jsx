@@ -20,6 +20,7 @@ function Navbar() {
     <>
     <button className="sidebar-toggle" onClick={() => setIsNavOpen(!isNavOpen)} >
         <span class="material-symbols-outlined">menu</span>
+        <span class="material-symbols-outlined">close</span>
     </button>
     <nav className={`nav ${isNavOpen ? 'nav-open':'nav-closed'}`}>
 
@@ -50,8 +51,10 @@ function Navbar() {
             </div>
           </li> 
           <li className="links">
-            <br></br>
-          <span>{user.name}</span>
+            <div className="sidebar-link-flex">
+              <span class="material-symbols-outlined">smart_toy</span>
+              <button className="nav-button">{user.name}</button>
+            </div>
           </li>
         </>
         

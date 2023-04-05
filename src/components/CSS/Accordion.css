@@ -86,7 +86,7 @@ p {
     }
 } */
 
-.App {
+.accordion-center {
     /* width: 100vw;
     height: 100vh; */
     /* position: fixed; */
@@ -139,7 +139,7 @@ p {
 }
 
 .main-title-underline {
-    width: 320px;
+    width: 590px;
     text-align: left;
     height: 0.1rem;
     background: black;
