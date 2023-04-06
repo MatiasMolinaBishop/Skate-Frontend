@@ -158,9 +158,9 @@ p {
 
 .underline {
     width: 100%;
-    height: 0.15rem;
-    background: var(--gh-blue-2);
-    margin: 20px auto;
+    height: 0.05rem;
+    background: rgb(64, 64, 232);
+    margin: 10px auto;
 }
 
 .column-container {
@@ -181,6 +181,8 @@ p {
     opacity: 1;
     animation-name: textanimate;
     animation-duration: 1s;
+    margin-top: 10px;
+    font-size: 0.8rem;
 }
 
 @keyframes textanimate {

@@ -4,7 +4,11 @@
     right: 3rem;
     background: transparent;
     border-color: transparent;
+    cursor: pointer;
+
 }
+
+
 
 .nav {
     width: 210px;
@@ -35,6 +39,7 @@
 
 .sidebar-toggle span {
     font-size: 2.5rem;
+
 }
 
 .sidebar-toggle :hover {

@@ -6,7 +6,7 @@ import { AuthContext } from "../context/auth.context";  // <== IMPORT
 
 function Navbar() {
 
-    const [isNavOpen, setIsNavOpen] = useState(false)
+    const [isNavOpen, setIsNavOpen] = useState(true)
   // Subscribe to the AuthContext to gain access to
   // the values from AuthContext.Provider `value` prop
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);   // <== ADD
@@ -19,8 +19,9 @@ function Navbar() {
   return (
     <>
     <button className="sidebar-toggle" onClick={() => setIsNavOpen(!isNavOpen)} >
-        <span class="material-symbols-outlined">menu</span>
-        <span class="material-symbols-outlined">close</span>
+      {!isNavOpen ?  <span class="material-symbols-outlined">menu</span>: <span class="material-symbols-outlined">close</span>}
+        {/* <span class="material-symbols-outlined">menu</span>
+        <span class="material-symbols-outlined">close</span> */}
     </button>
     <nav className={`nav ${isNavOpen ? 'nav-open':'nav-closed'}`}>
 

@@ -29,18 +29,28 @@ const Locations = () => {
 
     return (
         <div>
-            <h1>LOCATIONS</h1>
-            {locations.map((location) => {
-                return (
-                    <div className='location-card' key={location._id}>
-                        <Link to={`/locations/${location._id}`}>
-                            <h3>{location.title}</h3>
-                            <img src={location.img} alt='skatepark img' />
-                        </Link>
-                    </div>
+            <h1 className='locations-title'>Discover Events</h1>
+            <div className="locations-flex">
+                {locations.map((location) => {
+                    return (
 
-                )
-            })}
+                        <div className='location-card' key={location._id}>
+                            <div className="container">
+                                <Link to={`/locations/${location._id}`}>
+                                    {/* <h3>{location.title}</h3> */}
+                                    <img className='locations-card-img' src={location.img} alt='skatepark img' />
+                                    <div className="card-body">
+                                        <h1 className="locations-card-title">{location.title}</h1>
+                                        <p className="locations-card-description">{location.description}</p>
+                                        <p className="locations-card-description">{location.city}</p>
+                                    </div>
+                                </Link>
+                            </div>
+
+                        </div>
+                    )
+                })}
+            </div>
         </div>
     );
 }
