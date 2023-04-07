@@ -1,0 +1,46 @@
+.single-event-title {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+
+}
+
+.event-card {
+    margin: 0px auto;
+    width: 700px;
+    height: 700px;
+    padding: 0 0 0 0;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, .03);
+    background: #FFF;
+    border-radius: 10px;
+
+}
+
+.event-creator-img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin: 10px
+}
+
+.event-creator-flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0 10px;
+}
+
+.single-event-img {
+    width: 700px;
+    height: 400px;
+    object-fit: cover;
+}
+
+.event-title-card {
+    margin: 10px
+}
+
+.event-title-p {
+    margin: 10px
+}

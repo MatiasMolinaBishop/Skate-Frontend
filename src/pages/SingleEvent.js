@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
+import '../pages/CSS/SingleEvent.css'
 
 const SingleEvent = () => {
 
     const [event, setEvent] = useState([])
+    const [attending, setAttending] = useState(true)
     const { eventId } = useParams()
 
     const fetchtEvent = async () => {
@@ -21,25 +23,31 @@ const SingleEvent = () => {
         }
     }
 
+    const attendingEvent = () => {
+        setAttending(!attending)
+
+    }
+
     useEffect(() => {
         fetchtEvent()
     }, [])
 
     return (
         <div>
-            <h3>RSVP on this event and get in touch with other skaters attending</h3>
+            <h1 className="single-event-title">RSVP to this EVENT</h1>
             {event.title &&
-                <div>
-                    <h3>{event.creator.name}</h3>
-                    <img src={event.creator.img} alt='profile img' />
-                    <h3>{event.title}</h3>
-                    <img src={event.img} alt='event' img />
-                    <p>{event.description}</p>
+                <div className="event-card">
+                    <div className="event-creator-flex">
+                        <img className='event-creator-img' src={event.creator.img} alt='profile img' />
+                        <h3 className="event-creator-name">{event.creator.name}</h3>
+                    </div>
+                    <img className='single-event-img' src={event.img} alt='event' img />
+                    <h3 className="event-title-card">{event.title}</h3>
+                    <p className="event-title-p">{event.description}</p>
+                    <button onClick={attendingEvent}>{attending ? 'RSVP' : 'UnRSVP'}</button>
 
-                    <Link to="/locations">
-                        <button>Back Locations</button>
-                    </Link>
                 </div>}
+            <h1>Commenst</h1>
         </div>
     )
 }
