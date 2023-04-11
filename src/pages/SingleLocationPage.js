@@ -3,10 +3,21 @@ import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import AddEvent from "../components/AddEvent";
 import '../pages/CSS/SingleLocationPage.css'
+import Modal from "../components/Modal";
 
 const SingleLocationPage = () => {
 
     const [location, setLocation] = useState([])
+    const [isOpen, setIsOpen] = useState(false)
+
+    const modalHandler = (event) => {
+        setIsOpen(true)
+    }
+
+    const modalClose = (event) => {
+        setIsOpen(false)
+    }
+
     // Get the URL parameter `:locationId`   
     //useParams is a hook that comes with eact router that allows us to acess the query.parfams from the url
     const { locationId } = useParams()
@@ -44,15 +55,17 @@ const SingleLocationPage = () => {
                         <div className="card-body">
                             <h1 className="locations-card-title">{location.title}</h1>
                             <p className="locations-card-description">{location.description}</p>
-                            <button className="create-button">Create Event</button>
-
+                            <button className="create-button" onClick={modalHandler}>Create Event</button>
                         </div>
                     </div>
                 </div>
-
             </div>
-            {/* LATER ON WE WANT TO MAP OVER ALL THE EVENTS THAT EXIST ON EACH LOCATION */}
-            <AddEvent fetchLocation={fetchLocation} locationId={locationId} />
+            <div>
+                <Modal open={isOpen} onClose={modalClose}>
+                    <AddEvent fetchLocation={fetchLocation} locationId={locationId} modalClose={modalClose} />
+                </Modal>
+            </div>
+            <h2 className="single-location-title">Events happening  at •<span className="span-blue">{location.title}</span>•</h2>
             <div>
                 {location.events &&
                     location.events.map((event) => (

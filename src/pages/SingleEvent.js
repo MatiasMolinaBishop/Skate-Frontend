@@ -9,9 +9,11 @@ const SingleEvent = () => {
     const [attending, setAttending] = useState(true)
     const { eventId } = useParams()
 
+    const storedToken = localStorage.getItem("authToken");
+
     const fetchtEvent = async () => {
 
-        const storedToken = localStorage.getItem("authToken");
+        //const storedToken = localStorage.getItem("authToken");
 
         try {
             const response = await axios.get(`http://localhost:5005/api/events/${eventId}`, { headers: { Authorization: `Bearer ${storedToken}` } })
@@ -23,10 +25,27 @@ const SingleEvent = () => {
         }
     }
 
-    const attendingEvent = () => {
-        setAttending(!attending)
+    //TESSSSTTTTTTTTTTTTTTTTTTT
 
+    const attendingEvent = async () => {
+
+        //const storedToken = localStorage.getItem("authToken");
+        console.log(storedToken)
+
+        try {
+            console.log('HI')
+            console.log(eventId)
+            // http://localhost:5005/api/attending/642ac0f5e81634b160ae3f53
+            //await axios.post('http://localhost:5005/api/new-event', requestBody, { headers: { Authorization: `Bearer ${storedToken}` } })
+            await axios.post(`http://localhost:5005/api/attending/642ac0f5e81634b160ae3f53`, { headers: { Authorization: `Bearer ${storedToken}` } })
+            //console.log(response)
+        } catch (err) {
+            console.log(err)
+        }
+        setAttending(!attending)
     }
+
+    //TESSSSTTTTTTTTTTTTTTTTTTT
 
     useEffect(() => {
         fetchtEvent()
@@ -42,12 +61,13 @@ const SingleEvent = () => {
                         <h3 className="event-creator-name">{event.creator.name}</h3>
                     </div>
                     <img className='single-event-img' src={event.img} alt='event' img />
-                    <h3 className="event-title-card">{event.title}</h3>
+                    <button onClick={attendingEvent} className='rsvp-button'>{attending ? 'RSVP' : 'UnRSVP'}</button>
+                    <h2 className="event-title-card">{event.title}</h2>
                     <p className="event-title-p">{event.description}</p>
-                    <button onClick={attendingEvent}>{attending ? 'RSVP' : 'UnRSVP'}</button>
-
+                    <p className="event-title-p">People attending: {event.attending.length}</p>
+                    <p className="event-title-p">Location: {event.location.title}</p>
                 </div>}
-            <h1>Commenst</h1>
+            {/* <h1>Commenst</h1> */}
         </div>
     )
 }

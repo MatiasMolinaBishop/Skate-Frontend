@@ -87,3 +87,14 @@
     justify-content: center;
     margin: 30px auto;
 }
+
+.span-blue {
+    color: rgb(64, 64, 232);
+    ;
+}
+
+.span-blue:hover {
+    color: rgb(117, 167, 248);
+
+
+}

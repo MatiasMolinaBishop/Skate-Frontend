@@ -29,7 +29,8 @@ const Locations = () => {
 
     return (
         <div>
-            <h1 className='locations-title'>Discover Events</h1>
+            <h1 className='locations-title'>Discover •<span className='span-blue'>Locations</span>•</h1>
+            <p className='locations-title'>Create or see events happening at your prefered location!</p>
             <div className="locations-flex">
                 {locations.map((location) => {
                     return (
