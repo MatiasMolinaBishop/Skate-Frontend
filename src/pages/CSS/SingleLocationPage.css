@@ -66,7 +66,7 @@
 .events-card-flex {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     gap: 10px;
 
@@ -97,4 +97,20 @@
     color: rgb(117, 167, 248);
 
 
+}
+
+.attending-user-p {
+    font-size: 0.6rem;
+
+}
+
+.attending-user-flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.attending-list-flex {
+    display: flex;
+    flex-direction: row;
 }

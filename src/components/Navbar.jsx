@@ -11,6 +11,8 @@ function Navbar() {
   // the values from AuthContext.Provider `value` prop
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);   // <== ADD
 
+  console.log('the user info has:', user)
+
   
 
   
@@ -42,7 +44,7 @@ function Navbar() {
            <li className="links">
             <Link onClick={() => setIsNavOpen(!isNavOpen)} to="/locations" className="sidebar-link-flex">
             <span class="material-symbols-outlined">skateboarding</span>
-                <button className="nav-button">Skate Parks</button>
+                <button className="nav-button">Locations</button>
             </Link>  
           </li>   
           <li className="links">  
@@ -56,6 +58,10 @@ function Navbar() {
               <span class="material-symbols-outlined">smart_toy</span>
               <button className="nav-button">{user.name}</button>
             </div>
+          </li>
+          <li className="links">  
+            <img className='event-creator-img' src='https://images.unsplash.com/photo-1680763652764-c3714cfa872f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDE1fDZzTVZqVExTa2VRfHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60' alt='foto' />
+            <img className='event-creator-img' src={user.img} alt='foto' />
           </li>
         </>
         
