@@ -54,10 +54,12 @@ function Navbar() {
             </div>
           </li> 
           <li className="links">
-            <div className="sidebar-link-flex">
+          <Link onClick={() => setIsNavOpen(!isNavOpen)} to="/profile" className="sidebar-link-flex">
+            {/* <div className="sidebar-link-flex"> */}
               <span class="material-symbols-outlined">smart_toy</span>
               <button className="nav-button">{user.name}</button>
-            </div>
+            {/* </div> */}
+            </Link> 
           </li>
           <li className="links">  
             <img className='event-creator-img' src='https://images.unsplash.com/photo-1680763652764-c3714cfa872f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDE1fDZzTVZqVExTa2VRfHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60' alt='foto' />

@@ -24,6 +24,7 @@ const AddEvent = (props) => {
             //When we add an event this function will be invoked and the list of events will update showing the newly created event
             props.modalClose()
             props.fetchLocation()
+            alert('Event Created!');
             
         }catch(err){
             console.log(err)
@@ -77,7 +78,8 @@ const AddEvent = (props) => {
                 <section>
                     <div className="submit-form-section">
                         <div className="photo-container">
-                            <img src={img} alt='profile-img-preview'/>
+                            {img? <img src={img} alt='profile-img-preview'/>:<img src='https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fGZyaWVuZHN8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60' alt='profile-img-preview'/>}
+                            {/* <img src={img} alt='profile-img-preview'/> */}
                         </div>
                         <button type='submit' className="button-add-event">Submit</button>
                     </div>

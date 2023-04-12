@@ -55,6 +55,7 @@ const SingleLocationPage = () => {
                         <div className="card-body">
                             <h1 className="locations-card-title">{location.title}</h1>
                             <p className="locations-card-description">{location.description}</p>
+                            <p className="locations-card-description">{location.address}</p>
                             <button className="create-button" onClick={modalHandler}>Create Event</button>
                         </div>
                     </div>
