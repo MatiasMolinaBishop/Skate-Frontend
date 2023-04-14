@@ -1,17 +1,37 @@
 // src/components/Navbar.js
 
 import { Link } from "react-router-dom";
-import { useContext, useState } from "react";                     // <== IMPORT 
-import { AuthContext } from "../context/auth.context";  // <== IMPORT
+import { useContext, useState, useEffect } from "react";                  
+import { AuthContext } from "../context/auth.context";  
+import axios from "axios";
 
 function Navbar() {
 
     const [isNavOpen, setIsNavOpen] = useState(true)
+    const [profile, setProfile] = useState({})
   // Subscribe to the AuthContext to gain access to
   // the values from AuthContext.Provider `value` prop
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);   // <== ADD
+  const storedToken = localStorage.getItem("authToken");
 
   console.log('the user info has:', user)
+
+  const fetchProfile = async () => {
+
+    try {
+        const response = await axios.get(`http://localhost:5005/api/profile`, { headers: { Authorization: `Bearer ${storedToken}` } })
+        // console.log(response)
+        setProfile(response.data)
+        // console.log(profile)
+
+    } catch (err) {
+        console.log(err)
+    }
+}
+
+useEffect(() => {
+    fetchProfile()
+}, [isNavOpen])
 
   
 
@@ -62,8 +82,7 @@ function Navbar() {
             </Link> 
           </li>
           <li className="links">  
-            <img className='event-creator-img' src='https://images.unsplash.com/photo-1680763652764-c3714cfa872f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDE1fDZzTVZqVExTa2VRfHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60' alt='foto' />
-            <img className='event-creator-img' src={user.img} alt='foto' />
+            <img className='event-creator-img' src={profile.img} alt='foto' />
           </li>
         </>
         
