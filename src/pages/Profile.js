@@ -19,6 +19,21 @@ const Profile = () => {
         setIsOpen(false)
     }
 
+    const deleteEvent = async (id) => {
+        console.log('DELETED')
+
+
+        try {
+            await axios.delete(`http://localhost:5005/api/events/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } })
+            alert('You deleted this event')
+            fetchProfile()
+
+
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
     const fetchProfile = async () => {
 
         try {
@@ -51,12 +66,15 @@ const Profile = () => {
                     <div>
                         <h2 className="profile-title">Events Created:</h2>
                         <div className="right-flex">
-                            {profile.events.map((evento) => {
+                            {/* NEED TO ADD KEY WHEN I MAP OVER SOMETHING GO OVER ALL PAGES AND CHECK */}
+                            {/* CHECK KEYS SOMEHOE USE THEM TO KNOW THE ID */}
+                            {profile.events.map((evento, index) => {
                                 return (
-                                    <div className="profile-event-flex">
+
+                                    <div key={index} className="profile-event-flex">
                                         <p className="p-event">{evento.title}</p>
                                         <img className='event-creator-img' src={evento.img} alt='attending users' />
-                                        <button className="delete-button">DELETE</button>
+                                        <button className="delete-button" onClick={() => deleteEvent(evento._id)}>DELETE</button>
                                     </div>
                                 )
                             })}
