@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import '../pages/CSS/SingleEvent.css'
 import Modal from "../components/Modal";
+import Comments from "../components/Comments";
 
 const SingleEvent = () => {
 
@@ -22,9 +23,7 @@ const SingleEvent = () => {
     const storedToken = localStorage.getItem("authToken");
 
     const fetchtEvent = async () => {
-
         //const storedToken = localStorage.getItem("authToken");
-
         try {
             const response = await axios.get(`http://localhost:5005/api/events/${eventId}`, { headers: { Authorization: `Bearer ${storedToken}` } })
             setEvent(response.data)
@@ -36,7 +35,6 @@ const SingleEvent = () => {
     }
 
     const attendingEvent = async () => {
-
         //const storedToken = localStorage.getItem("authToken");
         console.log(storedToken)
 
@@ -57,20 +55,24 @@ const SingleEvent = () => {
         fetchtEvent()
     }, [attending])
 
+
     return (
         <div>
             <h1 className="single-event-title">RSVP to this •<span className='span-blue'>EVENT</span>•</h1>
             {event.title &&
                 <div className="event-card">
-                    <div className="event-creator-flex">
-                        <img className='event-creator-img' src={event.creator.img} alt='profile img' />
-                        <h3 className="event-creator-name">{event.creator.name}</h3>
-                    </div>
+                    <Link to={`/profile/${event.creator._id}`}>
+                        <div className="event-creator-flex">
+                            {/* <Link to={`/profile/${event.creator._id}`}> */}
+                            <img className='event-creator-img' src={event.creator.img} alt='profile img' />
+                            <h3 className="event-creator-name">{event.creator.name}</h3>
+                            {/* </Link> */}
+                        </div>
+                    </Link>
                     <img className='single-event-img' src={event.img} alt='event' img />
                     {attending ? <p className="event-title-p"> RSVP below to confirm you are attending this event</p > : <p className="event-title-p">Please unRSVP if you will not be attending this event</p>}
                     <button onClick={attendingEvent} className='rsvp-button'>{attending ? 'RSVP' : 'UnRSVP'}</button>
                     <h2 className="event-title-card">{event.title}</h2>
-                    <p className="event-title-p">{event.description}</p>
                     <p className="event-title-p">People attending: {event.attending.length}</p>
                     <button className="attending-modal-button" onClick={modalHandler}>See Whos Attending</button>
                     <Modal open={isOpen} onClose={modalClose}>
@@ -87,7 +89,18 @@ const SingleEvent = () => {
                             })}
                         </div>
                     </Modal>
-                    <p className="event-title-p">Location: {event.location.title}</p>
+                    <div className="event-info-card">
+                        <h3 className="event-title-p">{event.location.title}</h3>
+                        <p className="event-title-p">{event.description}</p>
+                    </div>
+                    <Comments />
+                    {event.comments.map((comment) => {
+                        return (
+                            <div>
+                                <h1>{comment.comment}</h1>
+                            </div>
+                        )
+                    })}
                 </div>}
             {/* <h1>Commenst</h1> */}
         </div>

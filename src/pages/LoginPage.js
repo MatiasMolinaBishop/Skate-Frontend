@@ -40,7 +40,7 @@ function LoginPage(props) {
     return (
         <div className="session">
             <div>
-                <img className="left" src='https://images.unsplash.com/photo-1478059299873-f047d8c5fe1a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fHJvYWRzJTIwY3VydmVzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60' alt='login img' />
+                <img className="left" src='https://images.unsplash.com/photo-1567410167229-7b4a4bae33d8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDd8fHNrYXRlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60' alt='login img' />
             </div>
             <div>
                 <h1 className="h1-auth">We love <span className="span-auth">BOARDS</span></h1>

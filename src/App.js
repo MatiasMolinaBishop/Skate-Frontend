@@ -9,10 +9,9 @@ import SingleEvent from './pages/SingleEvent';
 import SignupPage from './pages/SignupPage';
 import LoginPage from './pages/LoginPage';
 import Profile from './pages/Profile';
-import ProfileUser from './pages/ProfileUser';
 import IsAnon from './components/IsAnon';
 import IsPrivate from './components/IsPrivate';
-
+import OthersProfile from './pages/OthersProfile';
 
 
 
@@ -26,7 +25,7 @@ function App() {
         <Route path="/signup" element={<IsAnon> <SignupPage /> </IsAnon>} />
         <Route path="/" element={<HomePage />} />
         <Route path="/profile" element={<IsPrivate><Profile /></IsPrivate>} />
-        <Route path="/profile/:userId" element={<IsPrivate><ProfileUser /></IsPrivate>} />
+        <Route path="/profile/:userId" element={<IsPrivate><OthersProfile /></IsPrivate>} />
         <Route path="/locations" element={<IsPrivate><LocationsPage /></IsPrivate>} />
         <Route path="/locations/:locationId" element={<IsPrivate><SingleLocationPage /></IsPrivate>} />
         <Route path="/events/:eventId" element={<IsPrivate><SingleEvent /></IsPrivate>} />

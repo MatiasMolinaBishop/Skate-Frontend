@@ -101,3 +101,10 @@
     font-size: 1.5rem;
 
 }
+
+.event-info-card {
+    background-color: #f0eeee;
+    margin: 20px;
+    padding: 0.5px 0px;
+    border-radius: 10px;
+}
