@@ -93,16 +93,13 @@ const SingleEvent = () => {
                         <h3 className="event-title-p">{event.location.title}</h3>
                         <p className="event-title-p">{event.description}</p>
                     </div>
-                    <Comments />
-                    {event.comments.map((comment) => {
-                        return (
-                            <div>
-                                <h1>{comment.comment}</h1>
-                            </div>
-                        )
-                    })}
+                    <Comments eventId={event._id} fetchtEvent={fetchtEvent} />
+                    <div className="skateboy-bottom">
+                        <span class="material-symbols-outlined">skateboarding</span>
+                    </div>
                 </div>}
-            {/* <h1>Commenst</h1> */}
+
+
         </div>
     )
 }
