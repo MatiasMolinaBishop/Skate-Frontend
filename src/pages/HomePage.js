@@ -32,7 +32,7 @@ const HomePage = () => {
     return (
         <>
             <div>
-                <h1 className="home-title">skate surf snow BOARD</h1>
+                <h1 className="home-title">skate surf snow •<span className='blue-span'>BOARD</span>•</h1>
             </div>
             <div className='carousel'>
                 <ImageSlider slides={slides} />

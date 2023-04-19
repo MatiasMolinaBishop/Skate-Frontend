@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import AddEvent from "../components/AddEvent";
 import '../pages/CSS/SingleLocationPage.css'
 import Modal from "../components/Modal";
+import moment from 'moment';
 
 const SingleLocationPage = () => {
 
@@ -48,7 +49,7 @@ const SingleLocationPage = () => {
     return (
         <div>
             <div>
-                <h1 className="single-location-title">{location.title}</h1>
+                {/* <h1 className="single-location-title">{location.title}</h1> */}
                 <div className="single-location-card">
                     <div className="container">
                         <img className='locations-card-img ' src={location.img} alt='skatepark img' />
@@ -77,6 +78,7 @@ const SingleLocationPage = () => {
                                     <div>
                                         <h3 className="events-card-title">{event.title}</h3>
                                         <p className="events-card-p">{event.description}</p>
+                                        <p className="date">{moment(event.date).format('MMMM Do YYYY')}</p>
                                     </div>
                                 </div>
                             </Link>

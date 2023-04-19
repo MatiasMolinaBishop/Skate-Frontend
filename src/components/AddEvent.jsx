@@ -8,11 +8,12 @@ const AddEvent = (props) => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [img, setImg] = useState('')
+    const [date, setDate] = useState('')
 
     const handleSubmoit = async(e) => {
         e.preventDefault()
         const locationId = props.locationId; 
-        const requestBody = {title, description, img, locationId}
+        const requestBody = {title, description, img, locationId, date}
         const storedToken = localStorage.getItem("authToken");
 
         try{
@@ -21,6 +22,7 @@ const AddEvent = (props) => {
             setTitle('')
             setDescription('')
             setImg('')
+            setDate('')
             //When we add an event this function will be invoked and the list of events will update showing the newly created event
             props.modalClose()
             props.fetchLocation()
@@ -74,6 +76,14 @@ const AddEvent = (props) => {
                     value={img}
                     onChange={(e) => setImg(e.target.value)}
                 />  
+                <label for="date">Choose Date:</label>
+                <input 
+                    type="date" 
+                    id="date" 
+                    name="birthdate" 
+                    value={date}
+                    onChange={(e) => setDate(e.target.value)}
+                />
                 </section>
                 <section>
                     <div className="submit-form-section">

@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import '../pages/CSS/LocationsPage.css'
+import FilterSport from "../components/FilterSport";
 
 
 const Locations = () => {
 
     const [locations, setLocations] = useState([])
+    const [filter, setFilter] = useState(null);
     const APIurl = 'http://localhost:5005/api/locations'
 
     const fetchLocations = async () => {
@@ -27,12 +29,18 @@ const Locations = () => {
 
     console.log(locations)
 
+    const filteredLocations = filter
+        ? locations.filter((location) => location.board === filter)
+        : locations;
+
     return (
         <div>
             <h1 className='locations-title'>Discover •<span className='span-blue'>Locations</span>•</h1>
-            <p className='locations-title'>Create or see events happening at your prefered location!</p>
+            {/* <p className='locations-title'>Create or see events happening at your prefered location!</p> */}
+            <FilterSport setFilter={setFilter} />
+            <div className="line-separate"></div>
             <div className="locations-flex">
-                {locations.map((location) => {
+                {filteredLocations.map((location) => {
                     return (
 
                         <div className='location-card' key={location._id}>
