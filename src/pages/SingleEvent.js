@@ -12,6 +12,7 @@ const SingleEvent = () => {
     const { eventId } = useParams()
     const [isOpen, setIsOpen] = useState(false)
 
+
     const modalHandler = (event) => {
         setIsOpen(true)
     }

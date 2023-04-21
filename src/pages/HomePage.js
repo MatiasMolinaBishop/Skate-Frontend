@@ -1,8 +1,11 @@
 import '../pages/CSS/HomePage.css'
 import ImageSlider from '../components/ImageSlider';
 import Accordion from '../components/Accordion';
+// import { useEffect, useState } from "react";
 
 const HomePage = () => {
+
+    // const [currentImage, setCurrentImage] = useState(0);
 
     const slides = [
         {
@@ -26,6 +29,17 @@ const HomePage = () => {
             description: 'Happy hippie birthday'
         }
     ]
+
+
+    // useEffect(() => {
+    //     const interval = setInterval(() => {
+    //         setCurrentImage((currentImage) =>
+    //             currentImage === slides.length - 1 ? 0 : currentImage + 1
+    //         );
+    //     }, 4000);
+    //     return () => clearInterval(interval);
+    // }, [slides.length]);
+
 
 
 

@@ -5,11 +5,13 @@ import AddEvent from "../components/AddEvent";
 import '../pages/CSS/SingleLocationPage.css'
 import Modal from "../components/Modal";
 import moment from 'moment';
+import FilterDate from "../components/FilterDate";
 
 const SingleLocationPage = () => {
 
     const [location, setLocation] = useState([])
     const [isOpen, setIsOpen] = useState(false)
+    const [selectedDate, setSelectedDate] = useState(null);
 
     const modalHandler = (event) => {
         setIsOpen(true)
@@ -31,7 +33,7 @@ const SingleLocationPage = () => {
             const response = await axios.get(`http://localhost:5005/api/locations/${locationId}`, { headers: { Authorization: `Bearer ${storedToken}` } })
             setLocation(response.data)
             console.log(location)
-            //console.log('SHIT')
+
 
         } catch (err) {
             console.log(err)
@@ -45,6 +47,20 @@ const SingleLocationPage = () => {
     // const getAllEvents = () => {
     //     console.log('HANDLE THIS LATER')
     // }
+
+    //CHECK THIS FUNCTION OUT NOT WORKINMG SOMEHOW
+    const filteredLocations = selectedDate
+        //? location.events.filter((event) => { return moment(event.date).format('MMMM Do YYYY') === moment(selectedDate).format('MMMM Do YYYY') })
+        ? location.events.filter((event) => {
+            //console.log(event.date)
+            const eventDate = new Date(event.date).toISOString().substring(0, 10);
+            console.log(eventDate)
+            return eventDate === selectedDate
+        })
+        : location;
+
+    console.log('THIS ARE THE FILTERED LOCATIONS:', filteredLocations)
+    //CHECK THIS FUNCTION OUT NOT WORKINMG SOMEHOW
 
     return (
         <div>
@@ -68,10 +84,27 @@ const SingleLocationPage = () => {
                 </Modal>
             </div>
             <h2 className="single-location-title">Events happening  at •<span className="span-blue">{location.title}</span>•</h2>
+            <FilterDate setSelectedDate={setSelectedDate} />
             <div>
                 {location.events &&
-                    location.events.map((event) => (
-                        <div className="events-card">
+                    filteredLocations.events ?
+                    filteredLocations.events.map((event) => (
+                        <div className="events-card" key={event._id}>
+                            <Link to={`/events/${event._id}`} key={event._id}>
+                                <div className="events-card-flex">
+                                    <img className='events-card-img' src={event.img} alt='event img' />
+                                    <div>
+                                        <h3 className="events-card-title">{event.title}</h3>
+                                        <p className="events-card-p">{event.description}</p>
+                                        <p className="date">{moment(event.date).format('MMMM Do YYYY')}</p>
+                                    </div>
+                                </div>
+                            </Link>
+                        </div>
+                    )) :
+
+                    filteredLocations.map((event) => (
+                        <div className="events-card" key={event._id}>
                             <Link to={`/events/${event._id}`} key={event._id}>
                                 <div className="events-card-flex">
                                     <img className='events-card-img' src={event.img} alt='event img' />
@@ -84,6 +117,7 @@ const SingleLocationPage = () => {
                             </Link>
                         </div>
                     ))
+                    // <h1 className="single-location-title">No events on this date</h1>
                 }
             </div>
             <div className="skateboy-bottom">
