@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import '../components/CSS/Comments.css'
 import moment from 'moment';
@@ -14,7 +14,11 @@ const Comments = (props) => {
 
     let filteredComments = []
 
-    const fetchComments = async() => {
+    const getSpecificComments = useCallback((arr) => {
+        return arr.filter((item) => item.event === props.eventId);
+     }, [props.eventId])
+
+    const fetchComments = useCallback(async() => {
         try{
             const response = await axios.get(`http://localhost:5005/api/comments`, { headers: { Authorization: `Bearer ${storedToken}` } })
             setSpecificComments(getSpecificComments(response.data))
@@ -22,16 +26,12 @@ const Comments = (props) => {
         }catch(err){
             console.log(err)
         }
-    }
+    }, [getSpecificComments, storedToken])
 
     useEffect(() => {
         fetchComments()
-    }, [])
+    }, [fetchComments])
 
-    
-    const getSpecificComments = (arr) => {
-       return arr.filter((item) => item.event === props.eventId);
-    }
 
     return(
         <div>

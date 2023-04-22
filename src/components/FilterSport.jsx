@@ -6,18 +6,6 @@ const FilterSport = (props) => {
         props.setFilter(null)
     }
 
-    const filterSurf =() => {
-        props.setFilter('surf')
-    }
-
-    const filterSnowboard =() => {
-        props.setFilter('snowboard')
-    }
-
-
-
-
-
     return (
         <div className="filter-sport-flex">
              <div className="filter-sport-type-flex">

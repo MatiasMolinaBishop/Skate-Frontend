@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import AddEvent from "../components/AddEvent";
@@ -25,7 +25,7 @@ const SingleLocationPage = () => {
     //useParams is a hook that comes with eact router that allows us to acess the query.parfams from the url
     const { locationId } = useParams()
 
-    const fetchLocation = async () => {
+    const fetchLocation = useCallback(async () => {
         // Get the token from the localStorage
         const storedToken = localStorage.getItem("authToken");
 
@@ -38,11 +38,11 @@ const SingleLocationPage = () => {
         } catch (err) {
             console.log(err)
         }
-    }
+    }, [location, locationId])
 
     useEffect(() => {
         fetchLocation()
-    }, [])
+    }, [fetchLocation])
 
     // const getAllEvents = () => {
     //     console.log('HANDLE THIS LATER')

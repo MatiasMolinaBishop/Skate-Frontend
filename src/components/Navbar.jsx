@@ -1,7 +1,7 @@
 // src/components/Navbar.js
 
 import { Link } from "react-router-dom";
-import { useContext, useState, useEffect } from "react";                  
+import { useContext, useState, useEffect, useCallback } from "react";                  
 import { AuthContext } from "../context/auth.context";  
 import axios from "axios";
 
@@ -14,9 +14,9 @@ function Navbar() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);   // <== ADD
   const storedToken = localStorage.getItem("authToken");
 
-  console.log('the user info has:', user)
+  //console.log('the user info has:', user)
 
-  const fetchProfile = async () => {
+  const fetchProfile = useCallback(async () => {
 
     try {
         const response = await axios.get(`http://localhost:5005/api/profile`, { headers: { Authorization: `Bearer ${storedToken}` } })
@@ -27,15 +27,11 @@ function Navbar() {
     } catch (err) {
         console.log(err)
     }
-}
+}, [storedToken])
 
 useEffect(() => {
     fetchProfile()
-}, [isNavOpen])
-
-  
-
-  
+}, [isNavOpen, fetchProfile])
   //  Update the rendering logic to display different content 
   //  depending on the user being logged in or not
   return (

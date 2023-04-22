@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
+// import { Link, useParams } from "react-router-dom";
 import Modal from "../components/Modal";
 import EditProfileForm from "../components/EdditProfileForm";
 import '../pages/CSS/Profile.css'
@@ -34,7 +34,7 @@ const Profile = () => {
         }
     }
 
-    const fetchProfile = async () => {
+    const fetchProfile = useCallback(async () => {
 
         try {
             const response = await axios.get(`http://localhost:5005/api/profile`, { headers: { Authorization: `Bearer ${storedToken}` } })
@@ -45,11 +45,11 @@ const Profile = () => {
         } catch (err) {
             console.log(err)
         }
-    }
+    }, [storedToken])
 
     useEffect(() => {
         fetchProfile()
-    }, [])
+    }, [fetchProfile])
 
 
     return (

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import '../pages/CSS/SingleEvent.css'
@@ -23,7 +23,7 @@ const SingleEvent = () => {
 
     const storedToken = localStorage.getItem("authToken");
 
-    const fetchtEvent = async () => {
+    const fetchtEvent = useCallback(async () => {
         //const storedToken = localStorage.getItem("authToken");
         try {
             const response = await axios.get(`http://localhost:5005/api/events/${eventId}`, { headers: { Authorization: `Bearer ${storedToken}` } })
@@ -33,7 +33,7 @@ const SingleEvent = () => {
         } catch (err) {
             console.log(err)
         }
-    }
+    }, [event, eventId, storedToken])
 
     const attendingEvent = async () => {
         //const storedToken = localStorage.getItem("authToken");
@@ -54,7 +54,7 @@ const SingleEvent = () => {
 
     useEffect(() => {
         fetchtEvent()
-    }, [attending])
+    }, [attending, fetchtEvent])
 
 
     return (
