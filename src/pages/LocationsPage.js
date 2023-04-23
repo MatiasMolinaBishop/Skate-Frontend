@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import '../pages/CSS/LocationsPage.css'
 import FilterSport from "../components/FilterSport";
+import { motion } from 'framer-motion'
 
 
 const Locations = () => {
@@ -34,7 +35,11 @@ const Locations = () => {
         : locations;
 
     return (
-        <div>
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+        >
             <h1 className='locations-title'>Discover •<span className='span-blue'>Locations</span>•</h1>
             {/* <p className='locations-title'>Create or see events happening at your prefered location!</p> */}
             <FilterSport setFilter={setFilter} />
@@ -60,7 +65,7 @@ const Locations = () => {
                     )
                 })}
             </div>
-        </div>
+        </motion.div>
     );
 }
 

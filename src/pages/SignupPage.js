@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { motion } from 'framer-motion'
 
 function SignupPage(props) {
     const [email, setEmail] = useState("");
@@ -34,7 +35,13 @@ function SignupPage(props) {
 
 
     return (
-        <div className="session">
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="session"
+        >
+
 
             <div>
                 <img className="left" src='https://images.unsplash.com/photo-1584302052177-2e90841dad6a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTJ8fHNrYXRlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60' alt='login img' />
@@ -84,7 +91,7 @@ function SignupPage(props) {
                 <p className="p-auth">Already have account?</p>
                 <Link className='link-forms' to={"/login"}> Login</Link>
             </div>
-        </div>
+        </motion.div>
     )
 }
 

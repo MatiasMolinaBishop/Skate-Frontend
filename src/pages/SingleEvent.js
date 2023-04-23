@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import '../pages/CSS/SingleEvent.css'
 import Modal from "../components/Modal";
 import Comments from "../components/Comments";
+import { motion } from 'framer-motion'
 
 const SingleEvent = () => {
 
@@ -58,7 +59,11 @@ const SingleEvent = () => {
 
 
     return (
-        <div>
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+        >
             <h1 className="single-event-title">RSVP to this •<span className='span-blue'>EVENT</span>•</h1>
             {event.title &&
                 <div className="event-card">
@@ -99,9 +104,7 @@ const SingleEvent = () => {
                         <span class="material-symbols-outlined">skateboarding</span>
                     </div>
                 </div>}
-
-
-        </div>
+        </motion.div>
     )
 }
 

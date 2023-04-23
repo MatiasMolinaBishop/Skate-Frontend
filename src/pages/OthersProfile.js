@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import '../pages/CSS/Profile.css'
 import { useParams } from "react-router-dom";
+import { motion } from 'framer-motion'
 
 const OthersProfile = () => {
 
@@ -28,7 +29,11 @@ const OthersProfile = () => {
 
 
     return (
-        <div>
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+        >
             <h1 className="profile-title">We Love <span className="blue-span">BOARDS</span></h1>
             <div className='line-profile'></div>
             {profile.name &&
@@ -54,7 +59,7 @@ const OthersProfile = () => {
                 </div>
             }
             <div className='line-profile'></div>
-        </div>
+        </motion.div>
     )
 }
 

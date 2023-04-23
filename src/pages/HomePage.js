@@ -1,6 +1,7 @@
 import '../pages/CSS/HomePage.css'
 import ImageSlider from '../components/ImageSlider';
 import Accordion from '../components/Accordion';
+import { motion } from 'framer-motion'
 // import { useEffect, useState } from "react";
 
 const HomePage = () => {
@@ -30,32 +31,22 @@ const HomePage = () => {
         }
     ]
 
-
-    // useEffect(() => {
-    //     const interval = setInterval(() => {
-    //         setCurrentImage((currentImage) =>
-    //             currentImage === slides.length - 1 ? 0 : currentImage + 1
-    //         );
-    //     }, 4000);
-    //     return () => clearInterval(interval);
-    // }, [slides.length]);
-
-
-
-
     return (
-        <>
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+        >
             <div>
                 <h1 className="home-title">skate surf snow •<span className='blue-span'>BOARD</span>•</h1>
             </div>
             <div className='carousel'>
-                <ImageSlider slides={slides} />
+                <ImageSlider slides={slides} parentWidth={695} />
             </div>
             <div className='accordion-center'>
                 <Accordion />
             </div>
-
-        </>
+        </motion.div>
     );
 }
 

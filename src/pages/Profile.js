@@ -4,6 +4,7 @@ import axios from "axios";
 import Modal from "../components/Modal";
 import EditProfileForm from "../components/EdditProfileForm";
 import '../pages/CSS/Profile.css'
+import { motion } from 'framer-motion'
 
 const Profile = () => {
 
@@ -53,7 +54,11 @@ const Profile = () => {
 
 
     return (
-        <div>
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+        >
             <h1 className="profile-title">We Love <span className="blue-span">BOARDS</span></h1>
             <div className='line-profile'></div>
             {profile.name &&
@@ -88,7 +93,7 @@ const Profile = () => {
                     <EditProfileForm fetchProfile={fetchProfile} modalClose={modalClose} />
                 </Modal>
             </div>
-        </div>
+        </motion.div>
     )
 }
 

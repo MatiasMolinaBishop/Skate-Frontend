@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react"
 
-const ImageSlider = ({slides}) => {
+const ImageSlider = ({slides, parentWidth}) => {
 
     const timerRef = useRef(null) //We want something mutable to be stored between renders
     const [currentIndex, setCurrentIndex] = useState(2)
@@ -26,9 +26,9 @@ const ImageSlider = ({slides}) => {
         height:"100%",
         borderRadius: "10px",
         backgroundPosition:"center",
-        transition: '0.9s',
+        // transition: '0.9s',
         backgroundSize:"cover",
-        backgroundImage: `url(${slides[currentIndex].url})`
+        // backgroundImage: `url(${slides[currentIndex].url})`
        
     }
 
@@ -69,6 +69,25 @@ const ImageSlider = ({slides}) => {
         //   }
     }
 
+    //NEW
+
+    const slidesContainerStyles = {
+        display:'flex',
+        height: '100%',
+        transition:'transform ease-out 0.5s'
+    }
+
+    const slidesContainerOverflowStyles = {
+        overflow:'hidden',
+        height:'100%'
+
+    }
+
+    //NEW
+
+
+
+
     //FUNCTIONS
     const goToPrevious = () => {
         const isFirstSlide = currentIndex === 0; // This return either true or false 
@@ -97,6 +116,31 @@ const ImageSlider = ({slides}) => {
         setCurrentIndex(index)
     }
 
+
+
+
+
+    //NEW FUCNTIONS
+
+    const getSlidesWithBackground = (slideIndex) => ({
+        ...slidesStyles,
+        backgroundImage: `url(${slides[slideIndex].url})`,
+        width:`${parentWidth}px`
+    })
+
+    const getSlidesContainerStylesWithWidth = () => ({
+        ...slidesContainerStyles,
+        width: parentWidth * slides.length,
+        transform: `translateX(${-(currentIndex * parentWidth)}px)`,
+
+    
+    })
+
+    //NEW FUCNTIONS
+
+
+
+
     useEffect(() => {
         //We want to clear this setTimeout when we click the arrows or dots
         if(timerRef.current){
@@ -108,22 +152,40 @@ const ImageSlider = ({slides}) => {
         timerRef.current = setTimeout(() => {
             //Here we are assigning the value to timerRef.current as a setTimeout sideeefect which invokes goToNext() every 4000 milliseconds
             goToNext()
-        }, 8000)
+        }, 5000)
         //We alsO must clear the setTimeout after we distroy / unmount our component
         return () => clearTimeout(timerRef.current)
     }, [goToNext])
 
     return(
         <div style={sliderStyles}>
-            <div style={leftArrowStyles} onClick={goToPrevious}>‹</div>
-            <div  style={rightArrowStyles} onClick={goToNext}>›</div>
-            <div  style={slidesStyles}>
+            <div>
+                <div style={leftArrowStyles} onClick={goToPrevious}>‹</div>
+                <div  style={rightArrowStyles} onClick={goToNext}>›</div>
+            </div>
+
+
+            <div style={slidesContainerOverflowStyles}>
+            <div style={getSlidesContainerStylesWithWidth()}>
+                {slides.map((slide, slideIndex) => (
+                    <div  key={slideIndex} style={getSlidesWithBackground(slideIndex)}>
+                        <div className="carousel-message">
+                            <h1>{slide.title}</h1>
+                            <br></br>
+                            <h3>{slide.description}</h3>
+                        </div>
+                    </div>
+                ))}
+            </div>
+            </div>
+
+            {/* <div  style={slidesStyles}>
                 <div className="carousel-message">
                     <h1>{slides[currentIndex].title}</h1>
                     <br></br>
                     <h3>{slides[currentIndex].description}</h3>
                 </div>
-            </div>
+            </div> */}
             <div style={dotContainerStyles}>{slides.map((slide, index) => (
                 <div key={index} style={dotStyles} onClick={() =>goToSlide(index)}> • </div>
             ))}

@@ -6,6 +6,7 @@ import '../pages/CSS/SingleLocationPage.css'
 import Modal from "../components/Modal";
 import moment from 'moment';
 import FilterDate from "../components/FilterDate";
+import { motion } from 'framer-motion'
 
 const SingleLocationPage = () => {
 
@@ -63,7 +64,11 @@ const SingleLocationPage = () => {
     //CHECK THIS FUNCTION OUT NOT WORKINMG SOMEHOW
 
     return (
-        <div>
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+        >
             <div>
                 {/* <h1 className="single-location-title">{location.title}</h1> */}
                 <div className="single-location-card">
@@ -123,7 +128,7 @@ const SingleLocationPage = () => {
             <div className="skateboy-bottom">
                 <span class="material-symbols-outlined">skateboarding</span>
             </div>
-        </div>
+        </motion.div>
     )
 }
 
