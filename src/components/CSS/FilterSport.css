@@ -35,3 +35,21 @@
     border: none;
     background-color: transparent;
 }
+
+@media (max-width: 390px) {
+    .filter-sport-flex {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 0px;
+        margin: 20px auto;
+        width: 360px;
+        height: 40px;
+
+    }
+
+    .filter-sport-flex span {
+        font-size: 1rem;
+    }
+
+}

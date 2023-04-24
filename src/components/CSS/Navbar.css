@@ -8,19 +8,17 @@
 
 }
 
-
-
 .nav {
     width: 210px;
     position: fixed;
-    z-index: 1;
+    z-index: 100;
     top: 0;
     left: 0;
     background-color: #f0eeee;
     height: 100%;
     overflow-x: hidden;
     transition: 0.5s;
-    padding-top: 60px;
+    padding-top: 70px;
     display: flex;
     flex-direction: column;
 }
@@ -34,7 +32,8 @@
 }
 
 .nav-button {
-    z-index: 2
+    z-index: 2;
+    border: none;
 }
 
 .sidebar-toggle span {
@@ -56,18 +55,16 @@
 
 }
 
-.nav-button {
-    border: none;
-}
-
 .links :hover {
-
     font-size: 0.9rem;
 
 }
 
 .sidebar-link-flex {
     display: flex;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
     text-decoration: none;
     color: black;
     gap: 5px
@@ -83,6 +80,72 @@
     margin-bottom: 30px;
 }
 
+
 .sidebar-img-user {
     width: 20px;
+}
+
+@media (max-width: 1120px) {
+    .nav {
+        width: 180px;
+        padding: 60px auto
+    }
+
+    ul {
+        padding-inline-start: 10px;
+    }
+
+    .sidebar-toggle span {
+        font-size: 2.2rem;
+    }
+
+}
+
+@media (max-width: 963px) {
+    .nav {
+        width: 150px;
+    }
+
+    ul {
+        padding-inline-start: 5px;
+    }
+
+    .logo {
+        font-size: 0.48rem;
+        margin: 0px auto;
+        margin-bottom: 30px;
+    }
+
+    .links {
+        padding: 0.3rem 1rem;
+    }
+
+    .nav-button {
+        font-size: 0.7rem;
+    }
+
+    .sidebar-link-flex span {
+        font-size: 1.1rem;
+    }
+
+    .sidebar-toggle span {
+        font-size: 1.4rem;
+
+    }
+
+    .sidebar-img-user {
+        width: 16px;
+    }
+
+    .sidebar-toggle {
+        position: fixed;
+        top: 2.4rem;
+        right: 0.5rem;
+        background: none;
+        border-color: none;
+        cursor: pointer;
+        z-index: 100;
+        margin: 0
+    }
+
 }

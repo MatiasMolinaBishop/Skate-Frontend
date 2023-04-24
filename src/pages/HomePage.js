@@ -35,7 +35,7 @@ const HomePage = () => {
         <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            exit={{ opacity: 0, transition: { duration: 0.5 } }}
         >
             <div>
                 <h1 className="home-title">skate surf snow •<span className='blue-span'>BOARD</span>•</h1>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import '../pages/CSS/Profile.css'
 import { useParams } from "react-router-dom";
@@ -10,7 +10,7 @@ const OthersProfile = () => {
     const storedToken = localStorage.getItem("authToken");
     const { userId } = useParams()
 
-    const fetchProfile = async () => {
+    const fetchProfile = useCallback(async () => {
 
         //http://localhost:5005/api/profile/64359084a0ba636e22bfb8f8
 
@@ -21,11 +21,11 @@ const OthersProfile = () => {
         } catch (err) {
             console.log(err)
         }
-    }
+    }, [storedToken, userId])
 
     useEffect(() => {
         fetchProfile()
-    }, [])
+    }, [fetchProfile])
 
 
     return (
