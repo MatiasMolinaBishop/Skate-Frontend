@@ -49,3 +49,14 @@
     border: none;
     cursor: pointer;
 }
+
+@media (max-width: 390px) {
+    .modal-content {
+        font-size: 0.5rem;
+        font-weight: 500;
+        padding: 0.8rem 0.5rem;
+        margin: 0rem;
+        color: #2c2b2b;
+    }
+
+}
