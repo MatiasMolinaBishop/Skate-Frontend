@@ -61,7 +61,7 @@ const AddEvent = (props) => {
                 <textarea
                     type="text"
                     rows="5"
-                    cols="30"
+                    cols="20"
                     id="description"
                     name="description"
                     placeholder="description"
