@@ -46,6 +46,9 @@ const HomePage = () => {
             <div className='accordion-center'>
                 <Accordion />
             </div>
+            <div className="skateboy-bottom">
+                <span class="material-symbols-outlined">skateboarding</span>
+            </div>
         </motion.div>
     );
 }
