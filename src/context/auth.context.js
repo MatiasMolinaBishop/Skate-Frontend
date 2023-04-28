@@ -34,7 +34,7 @@ function AuthProviderWrapper(props) {
                     setIsLoggedIn(true);
                     setIsLoading(false);
                     setUser(user);
-                    navigate('/locations')
+                    navigate('/')
                 })
                 .catch((error) => {
                     // If the server sends an error response (invalid token) 
@@ -42,6 +42,7 @@ function AuthProviderWrapper(props) {
                     setIsLoggedIn(false);
                     setIsLoading(false);
                     setUser(null);
+                    navigate('/login')
                 });
 
         } else {
@@ -49,6 +50,7 @@ function AuthProviderWrapper(props) {
             setIsLoggedIn(false);
             setIsLoading(false);
             setUser(null);
+            navigate('/login')
         }
     }
 

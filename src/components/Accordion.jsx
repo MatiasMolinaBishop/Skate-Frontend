@@ -9,16 +9,16 @@ const Accordion = () => {
             answer:'Find others who share your passion. Its a great way to make new frineds'   
         },
         {
-            question:'I already have friends..',
-            answer:'Yea but what if they are busy? What if you are away on holiday? What if you just moved in to a new city?'   
+            question:'How does it work?',
+            answer:'Create an account and start making plans with cool people. You can create events so other users can contact and connect with you. You can also see other users events by location and sport and RSVP to let them know you are attending.'   
         },
         {
             question:'Who built this?',
-            answer:'Hi, I am Matias and I built this web application to develop and practice my programming skiills'   
+            answer:'Hi, I am Matias a fullstack web developer and civil engineer. This web application was built for learning purposes to develop and practice my programming skiills'   
         },
         {
-            question:'What tech did you use?',
-            answer:'This web applcation was built with JavaSciript and NodeJS. More specifically with Express & MongoDB for the backend and React for the frontend'   
+            question:'What tech was used to build this?',
+            answer:'This web application was built with JavaSciript and NodeJS. More specifically with Express & MongoDB (Mongoose) for the backend and React for the frontend'   
         }
     ]
 

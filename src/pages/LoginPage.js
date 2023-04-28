@@ -30,11 +30,14 @@ function LoginPage(props) {
             // Verify the token by sending a request 
             // to the server's JWT validation endpoint.
             authenticateUser();
-            navigate('/locations')
+            navigate('/profile')
 
         } catch (err) {
-            console.log(err)
-            setErrorMessage(err)
+            //console.log(err)
+            //setErrorMessage(err)
+            const errorDescription = err.response.data.message;
+            setErrorMessage(errorDescription);
+
         }
     };
 

@@ -28,8 +28,10 @@ function SignupPage(props) {
             await axios.post('http://localhost:5005/auth/signup', requestBody)
             navigate('/login');
         } catch (err) {
-            console.log(err)
-            setErrorMessage(err)
+            //console.log(err)
+            const errorDescription = err.response.data.message;
+            setErrorMessage(errorDescription);
+            // setErrorMessage(err)
         }
     };
 
