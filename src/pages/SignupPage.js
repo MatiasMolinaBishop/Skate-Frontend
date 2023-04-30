@@ -25,7 +25,7 @@ function SignupPage(props) {
 
         try {
             const requestBody = { email, password, name }
-            await axios.post('http://localhost:5005/auth/signup', requestBody)
+            await axios.post('https://we-love-boards.herokuapp.com/auth/signup', requestBody)
             navigate('/login');
         } catch (err) {
             //console.log(err)

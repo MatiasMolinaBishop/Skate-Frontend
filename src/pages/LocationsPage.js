@@ -10,7 +10,7 @@ const Locations = () => {
 
     const [locations, setLocations] = useState([])
     const [filter, setFilter] = useState(null);
-    const APIurl = 'http://localhost:5005/api/locations'
+    const APIurl = 'https://we-love-boards.herokuapp.com/api/locations'
 
     const fetchLocations = async () => {
         const storedToken = localStorage.getItem("authToken");
