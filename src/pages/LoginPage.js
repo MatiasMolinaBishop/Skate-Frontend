@@ -24,7 +24,7 @@ function LoginPage(props) {
         const requestBody = { email, password }
 
         try {
-            const response = await axios.post('http://localhost:5005/auth/login', requestBody)
+            const response = await axios.post('https://we-love-boards.herokuapp.com/auth/login', requestBody)
             console.log('JWT token', response.data.authToken);
             storeToken(response.data.authToken);
             // Verify the token by sending a request 
