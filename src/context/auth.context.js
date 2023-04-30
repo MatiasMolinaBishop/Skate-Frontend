@@ -16,7 +16,7 @@ function AuthProviderWrapper(props) {
         localStorage.setItem('authToken', token);
     }
 
-    const authenticateUser = useCallback(() => {           //  <==  ADD  
+    const authenticateUser = () => {           //  <==  ADD  
         // Get the stored token from the localStorage
         const storedToken = localStorage.getItem('authToken');
 
@@ -52,7 +52,7 @@ function AuthProviderWrapper(props) {
             setUser(null);
             navigate('/login')
         }
-    }, [navigate])
+    }
 
     const removeToken = () => {
         // Upon logout, remove the token from the localStorage
@@ -70,7 +70,7 @@ function AuthProviderWrapper(props) {
 
     useEffect(() => {
         authenticateUser();
-    }, [authenticateUser]);
+    }, []);
 
 
     /* 
