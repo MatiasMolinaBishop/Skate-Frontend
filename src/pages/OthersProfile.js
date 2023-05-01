@@ -15,7 +15,7 @@ const OthersProfile = () => {
         //http://localhost:5005/api/profile/64359084a0ba636e22bfb8f8
 
         try {
-            const response = await axios.get(`http://localhost:5005/api/profile/${userId}`, { headers: { Authorization: `Bearer ${storedToken}` } })
+            const response = await axios.get(`https://we-love-boards.herokuapp.com/api/profile/${userId}`, { headers: { Authorization: `Bearer ${storedToken}` } })
             setProfile(response.data)
 
         } catch (err) {

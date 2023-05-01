@@ -14,7 +14,7 @@ const AddComment = (props) => {
         const storedToken = localStorage.getItem("authToken");
 
         try{
-            await axios.post('http://localhost:5005/api/new-comment', requestBody, { headers: { Authorization: `Bearer ${storedToken}` } })
+            await axios.post('https://we-love-boards.herokuapp.com/api/new-comment', requestBody, { headers: { Authorization: `Bearer ${storedToken}` } })
             console.log('comment posted')
             setComment('')
             //When we add an event this function will be invoked and the list of events will update showing the newly created event

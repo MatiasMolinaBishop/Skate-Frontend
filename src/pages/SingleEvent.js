@@ -27,7 +27,7 @@ const SingleEvent = () => {
     const fetchtEvent = useCallback(async () => {
         //const storedToken = localStorage.getItem("authToken");
         try {
-            const response = await axios.get(`http://localhost:5005/api/events/${eventId}`, { headers: { Authorization: `Bearer ${storedToken}` } })
+            const response = await axios.get(`https://we-love-boards.herokuapp.com/api/events/${eventId}`, { headers: { Authorization: `Bearer ${storedToken}` } })
             setEvent(response.data)
             console.log(event)
 
@@ -43,7 +43,7 @@ const SingleEvent = () => {
         try {
             console.log('HI')
             console.log(eventId)
-            await axios.post(`http://localhost:5005/api/attending/${eventId}`, {}, { headers: { Authorization: `Bearer ${storedToken}` } })
+            await axios.post(`https://we-love-boards.herokuapp.com/api/attending/${eventId}`, {}, { headers: { Authorization: `Bearer ${storedToken}` } })
             console.log('ATTENDING')
             alert('Attendng Status Changed!');
 

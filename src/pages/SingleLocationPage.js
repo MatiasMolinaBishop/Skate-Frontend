@@ -31,7 +31,7 @@ const SingleLocationPage = () => {
         const storedToken = localStorage.getItem("authToken");
 
         try {
-            const response = await axios.get(`http://localhost:5005/api/locations/${locationId}`, { headers: { Authorization: `Bearer ${storedToken}` } })
+            const response = await axios.get(`https://we-love-boards.herokuapp.com/api/locations/${locationId}`, { headers: { Authorization: `Bearer ${storedToken}` } })
             setLocation(response.data)
             console.log(location)
 

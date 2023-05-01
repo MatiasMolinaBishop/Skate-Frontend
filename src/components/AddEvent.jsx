@@ -17,7 +17,7 @@ const AddEvent = (props) => {
         const storedToken = localStorage.getItem("authToken");
 
         try{
-            await axios.post('http://localhost:5005/api/new-event', requestBody, { headers: { Authorization: `Bearer ${storedToken}` } })
+            await axios.post('https://we-love-boards.herokuapp.com/api/new-event', requestBody, { headers: { Authorization: `Bearer ${storedToken}` } })
             console.log('event created')
             setTitle('')
             setDescription('')

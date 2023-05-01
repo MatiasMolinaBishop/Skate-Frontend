@@ -20,7 +20,7 @@ const Comments = (props) => {
 
     const fetchComments = useCallback(async() => {
         try{
-            const response = await axios.get(`http://localhost:5005/api/comments`, { headers: { Authorization: `Bearer ${storedToken}` } })
+            const response = await axios.get(`https://we-love-boards.herokuapp.com/api/comments`, { headers: { Authorization: `Bearer ${storedToken}` } })
             setSpecificComments(getSpecificComments(response.data))
             
         }catch(err){

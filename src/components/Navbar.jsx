@@ -19,7 +19,7 @@ function Navbar() {
   const fetchProfile = useCallback(async () => {
 
     try {
-        const response = await axios.get(`http://localhost:5005/api/profile`, { headers: { Authorization: `Bearer ${storedToken}` } })
+        const response = await axios.get(`https://we-love-boards.herokuapp.com/api/profile`, { headers: { Authorization: `Bearer ${storedToken}` } })
         // console.log(response)
         setProfile(response.data)
         // console.log(profile)

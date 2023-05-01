@@ -13,7 +13,7 @@ const EditProfileForm = (props) => {
         const storedToken = localStorage.getItem("authToken");
 
         try{
-            await axios.patch('http://localhost:5005/api//profile/edit', requestBody, { headers: { Authorization: `Bearer ${storedToken}` } })
+            await axios.patch('https://we-love-boards.herokuapp.com/api//profile/edit', requestBody, { headers: { Authorization: `Bearer ${storedToken}` } })
             setName('')
             setImg('')
             props.modalClose()

@@ -25,7 +25,7 @@ const Profile = () => {
 
 
         try {
-            await axios.delete(`http://localhost:5005/api/events/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } })
+            await axios.delete(`https://we-love-boards.herokuapp.com/api/events/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } })
             alert('You deleted this event')
             fetchProfile()
 
@@ -38,7 +38,7 @@ const Profile = () => {
     const fetchProfile = useCallback(async () => {
 
         try {
-            const response = await axios.get(`http://localhost:5005/api/profile`, { headers: { Authorization: `Bearer ${storedToken}` } })
+            const response = await axios.get(`https://we-love-boards.herokuapp.com/api/profile`, { headers: { Authorization: `Bearer ${storedToken}` } })
             // console.log(response)
             setProfile(response.data)
             // console.log(profile)
